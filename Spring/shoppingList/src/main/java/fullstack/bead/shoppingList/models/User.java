@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="users")
 @Data
@@ -23,4 +24,10 @@ public class User {
 
     @Column
     private String password;
+
+
+
+    public void setId(int id){
+        this.id = id;
+    }
 }

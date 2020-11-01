@@ -1,5 +1,6 @@
 package fullstack.bead.shoppingList.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +17,7 @@ public class ShoppingList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     @Column
     private Integer owner_id;
@@ -26,4 +27,9 @@ public class ShoppingList {
 
     @Column
     private Boolean shared_with_friends;
+
+
+    public void setId(int id){
+        this.id = id;
+    }
 }

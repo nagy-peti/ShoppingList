@@ -1,9 +1,6 @@
 package fullstack.bead.shoppingList.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -29,4 +26,10 @@ public class Item {
 
     @Column
     private String name;
+
+
+
+    public void setId(int id){
+        this.id = id;
+    }
 }

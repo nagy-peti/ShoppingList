@@ -30,6 +30,6 @@ public class ShoppingList {
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name="owner_id")
+    @JoinColumn(name="owner_id",insertable = false, updatable = false)
     private User user;
 }

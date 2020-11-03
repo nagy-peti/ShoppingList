@@ -28,8 +28,8 @@ public class ShoppingList {
     @Column
     private Boolean shared_with_friends;
 
-
-    public void setId(int id){
-        this.id = id;
-    }
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name="owner_id")
+    private User user;
 }

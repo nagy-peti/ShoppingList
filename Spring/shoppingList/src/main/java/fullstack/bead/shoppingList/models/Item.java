@@ -27,9 +27,4 @@ public class Item {
     @Column
     private String name;
 
-
-
-    public void setId(int id){
-        this.id = id;
-    }
 }

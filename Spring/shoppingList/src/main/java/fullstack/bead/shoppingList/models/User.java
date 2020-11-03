@@ -25,9 +25,6 @@ public class User {
     @Column
     private String password;
 
-
-
-    public void setId(int id){
-        this.id = id;
-    }
+    @OneToMany(mappedBy="user")
+    private List<ShoppingList> shoppingList;
 }

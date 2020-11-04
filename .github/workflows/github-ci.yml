@@ -1,26 +1,16 @@
-on:
-  push:
-    branches: [ main, developer ]
+name: Spring CI
 
-image: java
+on: [push]
 
 jobs:
-  include:
-    
-    -language: java
-     cache:
-      directories:
-        - $HOME/.m2
-        
-     before_install: cd Spring
-     install: true
-     
-     script: mvn -B test
-     
-     deploy:
-      skip_cleanup: true
-      provider: heroku
-      api_key:
-        secure:
-      app: shopping-list-fswp
-      on: main
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml

@@ -1,20 +1,19 @@
-language: java
-
-jdk: openjdk8
-
-cache: 
-  directories:
-    - $HOME/.m2
-
-before_install: cd Spring/shoppingList
-install: true
-
-script: mvn -B test 
-
-  deploy:
-    skip_cleanup: true
-    provider: heroku
-    api_key:
-      secure: g5j7JNVthqBp55ydk6q4t9+pZeTGmHKvlnkLNC5G57n23WysC6/iv1rm1btMA99iOnr09ae8LfWP96Bdomvy5LxSkT035XSCXPKQWkM7SLMG8o/scXISh4KupqJ6coFxyO4XCUn+5y7I2Ic0N1qjUeiAXXe3WnDWM5SxoOXqZQEIJm6f5T+4TepcWtzwFTcsOpGv79TlhFeU/N42Q4pxi4rnRglr8usNEGCi6owUuHUnURjEDG6yralZqO9nx8yY1aqtz6frgmiDGaXWckxfD6Mrjg/YbrJVmcWYLYIibtvfb2S1xX4LMzei1EzIIOs9q2YWI45eqjBp2C3DtdfEttU1DS4IBSBlgg1LgleXaJvTIdUJ0dDAcNAYqO6IEL3qPKszTanEPCOQGOqWuksOSfua3WBJAt/VF+psPGGXHs1+u+3KdOBgvJFFikj/OGG39W77K3S76DNXpr8fv7FfqQ1D8BS9WmHXbuUnKJBzXH7l4i91+BNOVCz2DmN/d6V8pr/IE/rrX9hjkneKxJcmgc4Ms4xno3lua4LsuOkmWCAf0TdsJGWBu0cQTaqXqCgPC33l1VC+huggJCgxlDcIkUGG06axpj79KirvStpHFYn6iJWhkkSLTG57BeymD/znFiBMXTUSt94RmxKHTxwuSnCtUwwlBA986GEPDtxJA6g=
-    app: shopping-list-fswp
-    on: main
+--- 
+  jobs: 
+    include: 
+      - 
+        before_install: "cd Spring/shoppingList"
+        cache: 
+          directories: 
+            - $HOME/.m2
+        deploy: 
+          api_key: 
+            secure: g5j7JNVthqBp55ydk6q4t9+pZeTGmHKvlnkLNC5G57n23WysC6/iv1rm1btMA99iOnr09ae8LfWP96Bdomvy5LxSkT035XSCXPKQWkM7SLMG8o/scXISh4KupqJ6coFxyO4XCUn+5y7I2Ic0N1qjUeiAXXe3WnDWM5SxoOXqZQEIJm6f5T+4TepcWtzwFTcsOpGv79TlhFeU/N42Q4pxi4rnRglr8usNEGCi6owUuHUnURjEDG6yralZqO9nx8yY1aqtz6frgmiDGaXWckxfD6Mrjg/YbrJVmcWYLYIibtvfb2S1xX4LMzei1EzIIOs9q2YWI45eqjBp2C3DtdfEttU1DS4IBSBlgg1LgleXaJvTIdUJ0dDAcNAYqO6IEL3qPKszTanEPCOQGOqWuksOSfua3WBJAt/VF+psPGGXHs1+u+3KdOBgvJFFikj/OGG39W77K3S76DNXpr8fv7FfqQ1D8BS9WmHXbuUnKJBzXH7l4i91+BNOVCz2DmN/d6V8pr/IE/rrX9hjkneKxJcmgc4Ms4xno3lua4LsuOkmWCAf0TdsJGWBu0cQTaqXqCgPC33l1VC+huggJCgxlDcIkUGG06axpj79KirvStpHFYn6iJWhkkSLTG57BeymD/znFiBMXTUSt94RmxKHTxwuSnCtUwwlBA986GEPDtxJA6g=
+          app: shopping-list-fswp
+          provider: heroku
+          skip_cleanup: true
+          true: main
+        install: true
+        jdk: openjdk8
+        language: java
+        script: "mvn -B test"

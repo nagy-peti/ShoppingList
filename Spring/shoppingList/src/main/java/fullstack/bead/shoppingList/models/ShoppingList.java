@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="shopping_list")
 @Data
@@ -26,10 +27,21 @@ public class ShoppingList {
     private String name;
 
     @Column
-    private Boolean shared_with_friends;
+    private String shared_with_friends;
 
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name="owner_id",insertable = false, updatable = false)
     private User user;
+
+    @ManyToMany
+    @JoinTable(name="Shopping_list_for_recipes",
+            joinColumns=@JoinColumn(name="shopping_list_id"),
+            inverseJoinColumns=@JoinColumn(name="recipe_id")
+    )
+    private List<Recipe> recipes;
+
+
+    @OneToMany(mappedBy="shoppingList")
+    private List<Item> items;
 }

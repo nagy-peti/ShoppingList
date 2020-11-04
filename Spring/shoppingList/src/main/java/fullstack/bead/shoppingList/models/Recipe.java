@@ -1,11 +1,13 @@
 package fullstack.bead.shoppingList.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="recipes")
 @Data
@@ -20,5 +22,18 @@ public class Recipe {
 
     @Column
     private String name;
+
+
+    @OneToMany(mappedBy="recipe")
+    private List<Item> items;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(name="Shopping_list_for_recipes",
+            joinColumns=@JoinColumn(name="recipe_id"),
+            inverseJoinColumns=@JoinColumn(name="shopping_list_id")
+    )
+    private List<ShoppingList> shoppingLists;
+
 
 }

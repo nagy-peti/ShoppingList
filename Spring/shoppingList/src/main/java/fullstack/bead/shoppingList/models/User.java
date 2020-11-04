@@ -26,5 +26,19 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy="user")
-    private List<ShoppingList> shoppingList;
+    private List<ShoppingList> shoppingLists;
+
+    @ManyToMany
+    @JoinTable(name="friends",
+            joinColumns=@JoinColumn(name="id_1"),
+            inverseJoinColumns=@JoinColumn(name="id_2")
+    )
+    private List<User> friends;
+//
+//    @ManyToMany
+//    @JoinTable(name="friends",
+//            joinColumns=@JoinColumn(name="id_2"),
+//            inverseJoinColumns=@JoinColumn(name="id_1")
+//    )
+//    private List<User> friendOf;
 }

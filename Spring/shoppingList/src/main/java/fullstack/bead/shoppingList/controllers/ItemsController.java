@@ -15,24 +15,11 @@ public class ItemsController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @GetMapping("")
-    public ResponseEntity<Iterable<Item>> showAll(){
-        return ResponseEntity.ok(itemRepository.findAll());
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<Item> show(@PathVariable Integer id){
-        Optional<Item> oItem =  itemRepository.findById(id);
-        if (oItem.isPresent()){
-            return ResponseEntity.ok(oItem.get());
-        }else{
-
-            return ResponseEntity.notFound().build();
-        }
-    }
     @PostMapping("")
     public ResponseEntity<Item> store(@RequestBody Item item){
         return ResponseEntity.ok(itemRepository.save(item));
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Item> update(@PathVariable Integer id, @RequestBody Item item){
         Optional<Item> oItem =  itemRepository.findById(id);

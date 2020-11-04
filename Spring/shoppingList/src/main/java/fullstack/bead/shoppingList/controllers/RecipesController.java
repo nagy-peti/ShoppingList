@@ -16,23 +16,27 @@ public class RecipesController {
     private RecipeRepository recipeRepository;
 
     @GetMapping("")
-    public ResponseEntity<Iterable<Recipe>> showAll(){
+    public ResponseEntity<Iterable<Recipe>> getAll(){
         return ResponseEntity.ok(recipeRepository.findAll());
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Recipe> show(@PathVariable Integer id){
+
+    @GetMapping("/{id}/items")
+    public ResponseEntity<Iterable<Item>> getItems(@PathVariable Integer id){
         Optional<Recipe> oRecipe =  recipeRepository.findById(id);
         if (oRecipe.isPresent()){
-            return ResponseEntity.ok(oRecipe.get());
+            Iterable<Item> items = oRecipe.get().getItems();
+            return ResponseEntity.ok(items);
         }else{
 
             return ResponseEntity.notFound().build();
         }
     }
+
     @PostMapping("")
     public ResponseEntity<Recipe> create(@RequestBody Recipe recipe){
         return ResponseEntity.ok(recipeRepository.save(recipe));
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Recipe> update(@PathVariable Integer id, @RequestBody Recipe recipe){
         Optional<Recipe> oRecipe =  recipeRepository.findById(id);
@@ -43,6 +47,7 @@ public class RecipesController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Recipe> delete(@PathVariable Integer id){
         Optional<Recipe> oRecipe =  recipeRepository.findById(id);

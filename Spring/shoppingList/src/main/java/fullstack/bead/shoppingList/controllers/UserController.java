@@ -38,7 +38,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/{id}/sharedShoppinglists")
+    @GetMapping("/{id}/sharedShoppingLists")
     public ResponseEntity<Iterable<Object[]>> getSharedShoppingLists(@PathVariable Integer id){
         Optional<User> oUser =  userRepository.findById(id);
         if (oUser.isPresent()){
@@ -57,7 +57,7 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PostMapping("/{id}/addfriend")
+    @PostMapping("/{id}/addFriend")
     public ResponseEntity<User> addFriend(@PathVariable Integer id, @RequestBody int newFriendId){
         Optional<User> oUser =  userRepository.findById(id);
         Optional<User> friend =  userRepository.findById(newFriendId);

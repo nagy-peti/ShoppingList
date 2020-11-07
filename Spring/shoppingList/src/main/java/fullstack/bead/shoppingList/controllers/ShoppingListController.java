@@ -4,6 +4,7 @@ import fullstack.bead.shoppingList.models.Item;
 import fullstack.bead.shoppingList.models.Recipe;
 import fullstack.bead.shoppingList.models.ShoppingList;
 import fullstack.bead.shoppingList.repositories.ItemRepository;
+import fullstack.bead.shoppingList.repositories.RecipeRepository;
 import fullstack.bead.shoppingList.repositories.ShoppingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,8 @@ import java.util.Optional;
 public class ShoppingListController {
     @Autowired
     private ShoppingListRepository shoppingListRepository;
+    @Autowired
+    private RecipeRepository recipeRepository;
 
 
     @PostMapping("")
@@ -34,14 +37,14 @@ public class ShoppingListController {
             return ResponseEntity.notFound().build();
         }
     }
-    @PutMapping("/{id}/addrecipe")
-    public ResponseEntity<ShoppingList> addRecipe(@PathVariable Integer id, @RequestBody Recipe newRecipe){
+    @PutMapping("/{id}/addRecipe/{recipe_id}")
+    public ResponseEntity<ShoppingList> addRecipe(@PathVariable Integer id, @PathVariable Integer recipe_id){
         Optional<ShoppingList> oShoppingList =  shoppingListRepository.findById(id);
-        if (oShoppingList.isPresent()){
-            List<Recipe> allrecipes = new ArrayList<>();
-            allrecipes.addAll(oShoppingList.get().getRecipes());
-            allrecipes.add(newRecipe);
-            oShoppingList.get().setRecipes(allrecipes);
+        Optional<Recipe> oRecipe =  recipeRepository.findById(recipe_id);
+        if (oShoppingList.isPresent() && oRecipe.isPresent()){
+            List<Recipe> allRecipes = oShoppingList.get().getRecipes();
+            allRecipes.add(oRecipe.get());
+            oShoppingList.get().setRecipes(allRecipes);
             return ResponseEntity.ok(shoppingListRepository.save(oShoppingList.get()));
         }else{
             return ResponseEntity.notFound().build();

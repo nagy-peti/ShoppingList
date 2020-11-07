@@ -8,7 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ItemRepository extends CrudRepository<Item, Integer> {
-//    @Query(value="select * from items where id=:id",nativeQuery=true)
-//    public Item getItemById(@Param("id") Integer id);
 
 }

@@ -1,19 +1,19 @@
 --- 
-  jobs: 
-    include: 
-      - 
-        before_install: "cd Spring/shoppingList"
-        cache: 
-          directories: 
-            - $HOME/.m2
-        deploy: 
-          api_key: 
-            secure: rzsiooetcvht/vXrdDTp/PpyN+Dm2qobvKv1iFplhx7yUmXkW+UjcVeBsQ1dVSbmccRyyqIZf+c9LB39hJDUB8QjHUl0JInuKwBNntMP6lgq5mwMON7egbHrnxCxoe3Ek6MH/10ZCH5GpR4xPozFIbwZMFa7RuGFlPJF6WkwKRnCCzRfPmlxgi6q3KaAEHJ3D0U28LbaMXc+1GxMalT4uqH8Z6/TM6Z06kHcX1+PhHrkg/IdN/f+r3CkmEjtIMyfFTbvuRVqwqsaPKGKFXRfh5qOZXAI7GVcn5sBzFq4uJxD0QnZe/02uzs6xXyeFNINOGENL/0Qm79/ioWZG9Zi8ggjcDNSw0qD43zZOMnXYfwIjUF4la0Qe7ul3veiChGpG9y13pGzwyhA7kqbTJVb7yUkwdTiOs8HihzGfyFkqhmDN9VQUwDPhl0+wAHIuPLpEi7VaZaYa4wU+JgzIR5G2JS/f/flPAj/kGYFPQM6+0YXoRGtADOjEuNGyg4SuRxyzG0boChbHvXwv8G7EtwmxgEEd1zQPcYiCXsOc56XirUh9FaowpgsUj2JwuuINRRZY3fPCJioEmUmgAS1T1V7vqZkUIJoK94nrgU8pLsWOg8Opt3+8o9TxmriZ6ypQTNYsgbnAUv2n/6+NkTnbDlpcGh2Pdi+1g6sHQhb4DTvX+4=
-          app: shopping-list-fswp
-          provider: heroku
-          skip_cleanup: true
-          true: main
-        install: true
-        jdk: openjdk8
-        language: java
-        script: "mvn -B test"
+jobs: 
+  include: 
+    - 
+      before_install: "cd Spring/shoppingList"
+      cache: 
+        directories: 
+          - $HOME/.m2
+      deploy: 
+        api_key: 
+          secure: "rzsiooetcvht/vXrdDTp/PpyN+Dm2qobvKv1iFplhx7yUmXkW+UjcVeBsQ1dVSbmccRyyqIZf+c9LB39hJDUB8QjHUl0JInuKwBNntMP6lgq5mwMON7egbHrnxCxoe3Ek6MH/10ZCH5GpR4xPozFIbwZMFa7RuGFlPJF6WkwKRnCCzRfPmlxgi6q3KaAEHJ3D0U28LbaMXc+1GxMalT4uqH8Z6/TM6Z06kHcX1+PhHrkg/IdN/f+r3CkmEjtIMyfFTbvuRVqwqsaPKGKFXRfh5qOZXAI7GVcn5sBzFq4uJxD0QnZe/02uzs6xXyeFNINOGENL/0Qm79/ioWZG9Zi8ggjcDNSw0qD43zZOMnXYfwIjUF4la0Qe7ul3veiChGpG9y13pGzwyhA7kqbTJVb7yUkwdTiOs8HihzGfyFkqhmDN9VQUwDPhl0+wAHIuPLpEi7VaZaYa4wU+JgzIR5G2JS/f/flPAj/kGYFPQM6+0YXoRGtADOjEuNGyg4SuRxyzG0boChbHvXwv8G7EtwmxgEEd1zQPcYiCXsOc56XirUh9FaowpgsUj2JwuuINRRZY3fPCJioEmUmgAS1T1V7vqZkUIJoK94nrgU8pLsWOg8Opt3+8o9TxmriZ6ypQTNYsgbnAUv2n/6+NkTnbDlpcGh2Pdi+1g6sHQhb4DTvX+4="
+        app: shopping-list-fswp
+        provider: heroku
+        skip_cleanup: true
+        true: main
+      install: true
+      jdk: openjdk8
+      language: java
+      script: "mvn -B test"

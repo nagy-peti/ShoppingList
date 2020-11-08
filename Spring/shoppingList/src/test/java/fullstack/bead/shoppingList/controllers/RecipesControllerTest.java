@@ -29,7 +29,7 @@ class RecipesControllerTest {
     private TestRestTemplate restTemplate;
 
 
-//
+    //
 //
     @Test
     public void shouldReturnAllRecipes() throws Exception {
@@ -119,7 +119,7 @@ class RecipesControllerTest {
                 restTemplate.exchange(
                         "http://localhost:" + port + "/recipes", HttpMethod.GET, null, new ParameterizedTypeReference<List<Recipe>>() {});
         assertThat(responseAfter.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseAfter.getBody().size()).isEqualTo(2);
+        assertThat(responseAfter.getBody().size()).isEqualTo(1);
 
     }
 

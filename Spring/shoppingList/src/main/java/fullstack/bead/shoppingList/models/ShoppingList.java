@@ -42,6 +42,6 @@ public class ShoppingList {
     private List<Recipe> recipes;
 
 
-    @OneToMany(mappedBy="shoppingList")
+    @OneToMany(mappedBy="shoppingList", cascade = CascadeType.ALL)
     private List<Item> items;
 }

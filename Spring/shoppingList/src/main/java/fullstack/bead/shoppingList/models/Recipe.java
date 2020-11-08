@@ -24,7 +24,7 @@ public class Recipe {
     private String name;
 
 
-    @OneToMany(mappedBy="recipe")
+    @OneToMany(mappedBy="recipe", cascade = CascadeType.ALL)
     private List<Item> items;
 
     @ManyToMany

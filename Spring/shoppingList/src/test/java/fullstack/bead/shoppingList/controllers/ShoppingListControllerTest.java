@@ -74,11 +74,12 @@ class ShoppingListControllerTest {
         restTemplate.delete("http://localhost:" + port + "/shopping_list/1");
 
 
+
         ResponseEntity<List<ShoppingList>> responseAfter =
                 restTemplate.exchange(
                         "http://localhost:" + port + "/users/1/shoppinglists", HttpMethod.GET, null, new ParameterizedTypeReference<List<ShoppingList>>() {});
         assertThat(responseAfter.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseAfter.getBody().size()).isEqualTo(4);
+        assertThat(responseAfter.getBody().size()).isEqualTo(3);
     }
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)

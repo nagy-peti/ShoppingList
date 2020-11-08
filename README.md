@@ -18,6 +18,16 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
 - Pintér Gergő: ...
 - Nagy Péter: ...
 
+### Könyvtárstruktúra
+
+- Spring
+    - backend keretrendszert tartalmazza
+- Angular
+    - frontend keretrendszert tartalmazza(később)
+- Database
+    - az adatbázis inicializáló .sql fájlját, 
+    illetve az adatbázis diagramját tartalmazza
+
 ## Backend megvalósítása
 
 ### Használt technológiák:
@@ -52,3 +62,7 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
     - POST - termék felvétele
     - PUT /{id} - termék módosítása
     - DELETE /{id} - termék törlése
+
+### PUT /shopping_list/{id} endpoint szekvencia diagram
+
+![](/Database/shopping_list_put.jpg)

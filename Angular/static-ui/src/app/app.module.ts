@@ -13,7 +13,12 @@ import { ModifyComponent } from './modify/modify.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    MainComponent,
+    SocialComponent,
+    RecipesComponent,
+    ModifyComponent
   ],
   imports: [
     BrowserModule,

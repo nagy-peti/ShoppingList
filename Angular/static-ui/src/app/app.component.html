@@ -1,1 +1,28 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    Shopping List
+    <!--<div *ngIf="isLoggedIn" class="nav-bar">
+      <nav mat-tab-nav-bar    
+           [color]="'accent'" 
+           >
+            <a mat-tab-link *ngFor="let link of links"
+              class="nav-bar-item"
+              [routerLink]="[link.route]"
+              (click)="activeLink = link.title"
+              [active]="activeLink == link.title">
+              {{link.title}}
+            </a>
+      </nav>
+    </div>
+        <div *ngIf="isLoggedIn" class="rightmost">
+          <button mat-mini-fab
+                  matTooltip="Log out"
+                  class="settings"
+                  [color]="'mat-grey'"
+                  (click)="logout()">
+            <mat-icon>login</mat-icon>
+          </button>
+        </div>-->
+  </mat-toolbar>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>

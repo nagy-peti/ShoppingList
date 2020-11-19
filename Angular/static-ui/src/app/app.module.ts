@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatRippleModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,16 +34,21 @@ import { LoginGuard } from './login-guard/login.guard';
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatRippleModule,
+    MatButtonModule,
+    MatTableModule,
     RouterModule.forRoot([
-      {path: '', component: LoginComponent},
-      {path: 'main', component: MainComponent, canActivate:[LoginGuard]},
-      {path: 'social', component: SocialComponent, canActivate:[LoginGuard]},
-      {path: 'recipes', component: RecipesComponent, canActivate:[LoginGuard]},
-      {path: 'modify', component: ModifyComponent, canActivate:[LoginGuard]}
+      { path: '', component: LoginComponent },
+      { path: 'main', component: MainComponent, canActivate: [LoginGuard] },
+      { path: 'social', component: SocialComponent, canActivate: [LoginGuard] },
+      { path: 'recipes', component: RecipesComponent, canActivate: [LoginGuard] }
     ]),
     BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

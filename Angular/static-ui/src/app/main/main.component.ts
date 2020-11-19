@@ -120,4 +120,11 @@ export class MainComponent implements OnInit {
     this.listName= "";
   }
 
+  modifyRow(data:ItemTuple){
+    this.itemName = data.name;
+    this.quantity = data.quantity.split(" ")[0];
+    this.unit = data.quantity.split(" ")[1];
+    this.deleteRow(data);
+  }
+
 }

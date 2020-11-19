@@ -23,7 +23,8 @@
                 overflow: auto;
                 width: 250px;
                 h1{
-                    width: calc(100% - 20px);
+                    width: calc(100% - 28px);
+                    padding-right: 8px;
                     mat-checkbox{
                         font-size: 14px;
                         float: right;

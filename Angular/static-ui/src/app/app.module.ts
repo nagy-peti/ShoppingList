@@ -8,8 +8,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -40,6 +45,11 @@ import { LoginGuard } from './login-guard/login.guard';
     MatRippleModule,
     MatButtonModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatCheckboxModule,
+    MatTooltipModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'main', component: MainComponent, canActivate: [LoginGuard] },

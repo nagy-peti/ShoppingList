@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginGuard } from '../login-guard/login.guard';
-
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router:Router,
     private login: LoginGuard,
+    public dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -37,4 +39,10 @@ export class LoginComponent implements OnInit {
           this.password = "";
         };
   };
+
+  openDialog(){
+    const dialogRef = this.dialog.open(RegisterDialogComponent,{
+      width: '250px'
+    });
+  }
 }

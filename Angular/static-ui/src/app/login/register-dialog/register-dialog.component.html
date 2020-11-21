@@ -1,0 +1,23 @@
+<div class="main">
+    <h2>Create account</h2>
+    <mat-form-field appearance="outline">
+        <mat-label>
+            Username
+        </mat-label>
+        <input matInput [(ngModel)]="username">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>
+            E-mail
+        </mat-label>
+        <input matInput [(ngModel)]="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>
+            Password
+        </mat-label>
+        <input matInput [(ngModel)]="password" [type]="'password'">
+    </mat-form-field><button mat-stroked-button class="row4" (click)="createAccount()">
+        Create
+    </button>
+</div>

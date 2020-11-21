@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +25,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { ModifyComponent } from './modify/modify.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginGuard } from './login-guard/login.guard';
+import { RegisterDialogComponent } from './login/register-dialog/register-dialog.component';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { LoginGuard } from './login-guard/login.guard';
     SocialComponent,
     RecipesComponent,
     ModifyComponent,
+    RegisterDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { LoginGuard } from './login-guard/login.guard';
     FormsModule,
     MatCheckboxModule,
     MatTooltipModule,
+    MatDialogModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'main', component: MainComponent, canActivate: [LoginGuard] },

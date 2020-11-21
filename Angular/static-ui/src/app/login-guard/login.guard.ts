@@ -1,15 +1,34 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivateChild } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+
+  constructor(
+    private router: Router
+    ){}
+
+  private logIn: boolean = false;
+  private loggedInSubject = new Subject<boolean>();
+  observingLoggingInSubject = this.loggedInSubject.asObservable();
+
+  changeLogInState(loggedIn:boolean){
+    this.logIn = loggedIn;
+    this.loggedInSubject.next(loggedIn);
   }
-  
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): boolean{
+      if(this.logIn){
+        return true;
+      }else{
+        this.router.navigate(['']);
+        return false;
+      }
+  }  
 }

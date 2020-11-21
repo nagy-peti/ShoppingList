@@ -1,0 +1,38 @@
+:host{
+    .container-sign{
+        margin-left: calc(50% - 100px);
+        margin-top: 10%;
+        width: 100px;
+        height: 100px;
+        display: grid;
+    
+        .row1{
+            text-align: center;
+            grid-row: 1;
+        }
+        .row2{
+            grid-row: 2;
+        }
+        .row3{
+            grid-row: 3;
+        }
+        .row4{
+            grid-row: 4;
+            background-color: #3f51b5ab;
+            color: white;
+        }
+        .row6{
+            margin-top: 6px;   
+            grid-row: 6;
+        }
+        .invalid_login{
+            color: red;
+            font-size:small;
+        }
+        mat-icon{
+            font-size: small !important;
+            margin-right: -10px;
+            margin-left: 6px;
+        }
+    }
+}

@@ -12,6 +12,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatRippleModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +28,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { ModifyComponent } from './modify/modify.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginGuard } from './login-guard/login.guard';
+import { RegisterDialogComponent } from './login/register-dialog/register-dialog.component';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RecipeService } from './services/recipe.service';
@@ -41,6 +47,7 @@ import { AddItemComponent } from './shared/item/add-item/add-item.component';
     ItemComponent,
     AddRecipeComponent,
     AddItemComponent,
+    RegisterDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,12 +63,23 @@ import { AddItemComponent } from './shared/item/add-item/add-item.component';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatListModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatRippleModule,
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatDialogModule,
     RouterModule.forRoot([
-      {path: '', component: LoginComponent},
-      {path: 'main', component: MainComponent, canActivate:[LoginGuard]},
-      {path: 'social', component: SocialComponent, canActivate:[LoginGuard]},
-      {path: 'recipes', component: RecipesComponent, canActivate:[LoginGuard]},
-      {path: 'modify', component: ModifyComponent, canActivate:[LoginGuard]}
+      { path: '', component: LoginComponent },
+      { path: 'main', component: MainComponent, canActivate: [LoginGuard] },
+      { path: 'social', component: SocialComponent, canActivate: [LoginGuard] },
+      { path: 'recipes', component: RecipesComponent, canActivate: [LoginGuard] }
     ]),
     BrowserAnimationsModule,
     MatExpansionModule,

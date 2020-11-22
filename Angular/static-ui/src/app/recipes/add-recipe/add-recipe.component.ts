@@ -33,8 +33,8 @@ export class AddRecipeComponent implements OnInit {
     let modified:Recipe=this.data
     modified.name=form.value.name
     this.recipeService.add(modified)
-    this.dialogRef.close();
   }
+  this.dialogRef.close();
 }
 
 }

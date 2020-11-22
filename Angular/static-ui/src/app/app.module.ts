@@ -35,6 +35,7 @@ import { RecipeService } from './services/recipe.service';
 import { ItemComponent } from './shared/item/item.component';
 import { AddRecipeComponent } from './recipes/add-recipe/add-recipe.component';
 import { AddItemComponent } from './shared/item/add-item/add-item.component';
+import { AddFriendComponent } from './social/add-friend/add-friend/add-friend.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AddItemComponent } from './shared/item/add-item/add-item.component';
     AddRecipeComponent,
     AddItemComponent,
     RegisterDialogComponent,
+    AddFriendComponent,
   ],
   imports: [
     BrowserModule,

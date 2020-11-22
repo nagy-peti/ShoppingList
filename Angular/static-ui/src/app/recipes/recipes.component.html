@@ -1,4 +1,5 @@
-<div class="recipe-list">
+<div class="recipe-body">
+    <div class="recipe-list">
     <mat-accordion multi>
         <mat-expansion-panel class="recipe-exp-panel" *ngFor="let recipe of recipes">
             <mat-expansion-panel-header>
@@ -46,3 +47,4 @@
     (click)="openAddRecipeDialog()">
     <mat-icon>add</mat-icon>
 </button>
+</div>

@@ -4,10 +4,12 @@ import fullstack.bead.shoppingList.models.Recipe;
 import fullstack.bead.shoppingList.models.ShoppingList;
 import fullstack.bead.shoppingList.models.User;
 import fullstack.bead.shoppingList.repositories.UserRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +20,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("")
+    public ResponseEntity<Iterable<User>> getAll(){
+        return ResponseEntity.ok(userRepository.findAll());
+
+    }
     @GetMapping("/{id}")
     public ResponseEntity<User> get(@PathVariable Integer id){
         Optional<User> oUser =  userRepository.findById(id);
@@ -26,6 +33,15 @@ public class UserController {
         }else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> create(@RequestBody registeringUser user){
+        System.out.println(user);
+        User newUser = new User();
+        newUser.setPassword(user.getPassword());
+        newUser.setUsername(user.getUsername());
+        return ResponseEntity.ok(userRepository.save(newUser));
     }
 
     @GetMapping("/{id}/shoppinglists")
@@ -70,4 +86,10 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+}
+
+@Data
+class registeringUser{
+    private String username;
+    private String password;
 }

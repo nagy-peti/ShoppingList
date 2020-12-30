@@ -27,7 +27,6 @@ public class RecipesController {
             Iterable<Item> items = oRecipe.get().getItems();
             return ResponseEntity.ok(items);
         }else{
-
             return ResponseEntity.notFound().build();
         }
     }

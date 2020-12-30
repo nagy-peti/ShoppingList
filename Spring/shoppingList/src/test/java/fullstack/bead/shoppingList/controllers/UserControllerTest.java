@@ -31,6 +31,26 @@ class UserControllerTest {
 
 
     @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+    public void shouldAddNewUser() throws Exception {
+        User newUser = new User();
+        newUser.setUsername("username_new");
+        newUser.setPassword("password");
+        ResponseEntity<User> responsePost =
+                restTemplate.
+                        postForEntity("http://localhost:" + port + "/users/register",
+                                newUser,
+                                User.class);
+
+        assertThat(responsePost.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responsePost.getBody().getId()).isNotNull();
+        assertThat(responsePost.getBody().getId()).isEqualTo(5);
+        assertThat(responsePost.getBody().getUsername()).isEqualTo("username_new");
+        assertThat(responsePost.getBody().getPassword()).isEqualTo("password");
+
+    }
+
+    @Test
     public void shouldReturnUserShoppingLists() throws Exception {
         ResponseEntity<List<ShoppingList>> response =
                 restTemplate.exchange(

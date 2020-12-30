@@ -1,0 +1,39 @@
+<div class="container-sign">
+    <h1 class="row1">
+        Sign in
+    </h1>
+    <mat-form-field class="row2"  
+                    appearance="outline">
+        <mat-label>
+            Username
+        </mat-label>
+        <input matInput
+               [(ngModel)]="username">
+    </mat-form-field>
+    <mat-form-field class="row3" 
+                    appearance="outline">
+        <mat-label>
+            Password
+        </mat-label>
+        <input matInput 
+               [(ngModel)]="password"
+               [type]="'password'">
+    </mat-form-field>
+    <button mat-stroked-button 
+            class="row4"
+            (click)="getVerification()">
+            Log in
+    </button>
+    <span *ngIf="isInvalid" 
+          class="invalid_login">
+        <mat-icon>
+            error
+        </mat-icon>
+        Invalid username or password
+    </span>
+    <button mat-stroked-button 
+            class="row6"
+            (click)="openDialog()">
+            Create Account
+    </button>
+</div>

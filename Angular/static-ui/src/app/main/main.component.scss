@@ -1,0 +1,129 @@
+:host{
+    .main{
+        width: 100%;
+        height: 100%;
+        .sidenav-container{
+            width: calc(100% - 250px);
+            height: 100%;
+            .center-body{
+                min-width: 200px;
+                max-width: 500px;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                h1{
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                    min-width: 100px;
+                    max-width: 502px;
+                }
+            }
+
+            mat-sidenav{
+                overflow: auto;
+                width: 250px;
+                h1{
+                    width: calc(100% - 28px);
+                    padding-right: 8px;
+                    mat-checkbox{
+                        font-size: 14px;
+                        float: right;
+                        margin-right: 4px;
+                    }
+                }
+                button{
+                    background-color: #3f51b5ab;
+                    color: white;
+                    margin-left: 8px;
+                    width: 30px;
+                    height: 30px;
+                    mat-icon{
+                        color: white;
+                        margin: -2px 0px 0px 0px;
+                        font-size: 16px;
+                    }
+                }
+                mat-form-field{
+                    margin-left: 4px;
+                    margin-top: 18px;
+                    font-size: 14px;
+                    width: 150px;
+                }
+            }
+            h1{
+                color: white;
+                height: 40px;
+                background-color: #3f51b5ab;
+                padding-left: 20px;
+                padding-top: 10px;
+                margin-bottom: 0px;
+            }
+        }
+
+        .container{
+            background-color: white;
+            border: 1px solid #8080803b;
+            mat-icon{
+                margin-left: 0px;
+                font-size: 16px;
+                color: red;
+                margin-right: 0px;
+                cursor: pointer;
+            }
+            .add-row{
+                display:flex;
+                flex-direction: row;
+                height: 70px;
+                mat-form-field{
+                    margin-left: 4px;
+                    max-width: 100px;
+                    min-width: 10px;
+                    font-size: 16px;
+                }
+                .item-name{
+                    max-width: 150px;
+                }
+                button{
+                    margin-top: 4px;
+                    margin-left: 4px;
+                    height: 59.5px;
+                    width: 127px;
+                    background-color: #3f51b5ab;
+                    color: white;
+                }
+            }
+        }
+        mat-selection-list{
+            height: calc(100% - 50px);
+            width: 100%;
+            overflow: auto;
+            outline: none !important;
+            padding-top: 0px;
+            .edit-mode{
+                color: red;
+                cursor: pointer;
+            }
+        }
+        mat-icon{
+            margin-right: 10px;
+            margin-left: 5%;
+            color: gray;
+        }
+        mat-list-item{
+            cursor: pointer;
+        }
+        .add-icon{
+            margin-left: 5%;
+        }
+        
+        table{
+            width: calc(100% - 2px);
+        }
+    }
+    .right-align{
+        text-align: right;
+    }
+    .big-font{
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,35 @@
+:host{
+    .mat-icon-button{
+        width: fit-content;
+        height: fit-content;
+    }
+    .mat-card-header-text{
+        border: 1px solid;
+    }
+    .mat-card{
+        margin: 2px;
+        width: max-content;
+    }
+
+    .item-mat-card{
+        background-color: rgb(63,81,181);
+        color: white;
+
+    }
+    .mat-card-subtitle{
+        color: white;
+        
+    }
+    .item-delete-icon,
+    .item-modify-icon{
+        background-color: white;
+        border-radius:50px;
+        cursor: pointer;
+        margin-right: 5px;
+        
+    }
+    .right-corner{
+        margin-left: auto;
+        width: fit-content;
+    }
+}

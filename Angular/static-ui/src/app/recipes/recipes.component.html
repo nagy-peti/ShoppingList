@@ -1,0 +1,50 @@
+<div class="recipe-body">
+    <div class="recipe-list">
+    <mat-accordion multi>
+        <mat-expansion-panel class="recipe-exp-panel" *ngFor="let recipe of recipes">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h2>{{recipe.name}}</h2>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div class="button-container">
+                        <button mat-mini-fab class="mat-elevation-z0" color="primary"
+                            matTooltip="Rename Recipe"
+                            matTooltipPosition="above"
+                            (click)="openModifyRecipeDialog(recipe)">
+                            <mat-icon>build</mat-icon>
+                        </button>
+                        <button mat-mini-fab class="mat-elevation-z0" color="warn"
+                            matTooltip="Delete Recipe"
+                            matTooltipPosition="above"
+                            (click)="deleteRecipe(recipe.id)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="item-list">
+                <div *ngFor="let item of recipe.items">
+                    <item-card color="primary" class="m-0" [item]="item"></item-card>
+                </div>
+                <div class="button-container">
+                <button mat-mini-fab class="mat-elevation-z0,button-icon" color="primary"
+                        matTooltip="Add new item"
+                        matTooltipPosition="above"
+                        (click)="openAddItemDialog()">
+                            <mat-icon>plus_one</mat-icon>
+                        </button>
+                    </div>
+            </div>
+            
+
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>   
+<button mat-fab class="add-recipe-button" color="primary"
+    matTooltip="Add Recipe"
+    matTooltipPosition="left"
+    (click)="openAddRecipeDialog()">
+    <mat-icon>add</mat-icon>
+</button>
+</div>

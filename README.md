@@ -11,12 +11,6 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
 ## Nem funkcionális követelmények
 -   Felhasználóbarát, igényes felhasználói felület.
 -   Több böngésző támogatása
-## Fogalomjegyzék
-
-
-## Szerepkörök
-- Pintér Gergő: ...
-- Nagy Péter: ...
 
 ### Könyvtárstruktúra
 
@@ -66,3 +60,33 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
 ### PUT /shopping_list/{id} endpoint szekvencia diagram
 
 ![](/Database/shopping_list_put.jpg)
+   
+
+## Frontend megvalósítása
+
+### Használati eset
+- Felhasználó: Bejelentkezés vagy regisztráció
+
+    Bejelentkezve
+    
+        - Bevásárló listák kezelése, új felvétele, meglévő módosítása
+        - Barátok között böngészés, új felvétele
+        - Receptek kezelése, új felvétele, meglévő módosítása
+
+
+### Fejlesztői környezet
+[link](https://github.com/nagy-peti/ShoppingList/blob/angular-dev/Angular/static-ui/README.md)
+
+### Könyvtárstruktúra
+    .
+    ├── ...
+    ├──  app                   
+    │   ├── login           # Bejelentkezés és regisztrációs komponensek
+    │   ├── login-guard
+    │   ├── main            # Főoldal komponens,   
+    │   ├── item            # Item és mentés-módosítás komponensek, 
+    │   ├── recipes         # Receptek és mentés-módosítás komponensek, 
+    │   ├── social          # Barátok oldal és új hozzáadása komponens, 
+    │   └── services
+    └── ...
+

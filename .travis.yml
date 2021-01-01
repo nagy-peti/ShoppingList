@@ -7,8 +7,7 @@ jobs:
         directories: 
           - $HOME/.m2
       deploy: 
-        api_key: 
-          secure: $HEROKU_TOKEN
+        api_key: $HEROKU_TOKEN
         app: shopping-list-fswp
         provider: heroku
         skip_cleanup: true

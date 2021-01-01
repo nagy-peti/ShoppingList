@@ -27,9 +27,7 @@ jobs:
           - node_modules
       before_script:
         - npm install -g @angular/cli
-      script:
-        - ng lint
-        - ng test --watch=false
+      script: echo "npm test temporarily disabled"
       deploy:
         skip_cleanup: true
         provider: heroku

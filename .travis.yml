@@ -8,7 +8,7 @@ jobs:
           - $HOME/.m2
       deploy: 
         api_key: 
-          secure: "$HEROKU_TOKEN"
+          secure: "MLWlkvXyNSljHK/4mhHnmZ34Vz2pd4CmAyoPT9j2YKNFh5C44jzGJexx4Ki3M79wrJaV2bVHUQcSbul3cnGBGRPCNFLm31qSJ3n4dCx/KZnTbKdo9xVtkd3VGllUqFfv5JEZN3jCoKV3KufDlhzDGXdIqkBiKce+wK2UVk4hBIxmk3wA2vFo07S83Gd/P7meN/Fjl6838VkbeTpvEYSVbZH5QeSC2qB7GE5a46GmHwqXwQDlZJY71RxXcn7we9ZCqs3rtgELlXNp4l9l+SKQsqgwCJ5nDmvG096cusjiEQJlUm5TdYrbJItqW30IgnH2OBMmSQ1SDTywN9RWlquWOsI0YH5ZtzOpfqv2DzMnvOTnwFeTMBPfkRk/LyBQwYaAYUQ3lttawZnIM5PHeIgwX1PHCPNa1CFoe6gnh+55JQ3J9J/bWqFdak++3YN0fszifEdIAKCk+Jn2b/+BQJAl/pvLUpo6Ae/9Y4gKVWCT4rtV9cafp9oPqs/2PdEWssam836oQXH1xqSvPjR/lZKTY1URgsPoS2UNJPlUl4TV9cwyh8Wzcblxupt3rhioaGbma69CGjU6n8xh9A85zZLK8ey38xQRzbGjRMlchB0nGVGRFMLTcbIFc24gKMX7enuHXIJUftEEnBZAO84oq0t3b2LUZKSDMXvxV5mwsxs9VVo="
         app: shopping-list-fswp
         provider: heroku
         skip_cleanup: true

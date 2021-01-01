@@ -32,5 +32,5 @@ jobs:
         skip_cleanup: true
         provider: heroku
         api_key: $HEROKU_TOKEN
-        app: shopping-list-fswp
+        app: slfswp
         on: main

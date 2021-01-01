@@ -17,14 +17,14 @@ const foreceSSL = function() {
 
 // Statikus állományok elérésének definiálása:
 
-app.use(express.static('/dist/static-ui'));
+app.use(express.static('Angular/static-ui/dist/static-ui'));
 
 // PathLocationStrategy kezelése, azaz minden URI áritányítás index.html-re, ahol a továbbiakban az Angular Routing kezeli:
 
 app.get('/*', function(req, res) {
-	res.sendFile(path.join('/dist/static-ui/index.html'));
+	res.sendFile(path.join('Angular/static-ui/dist/static-ui/index.html'));
 });
 
 // Express figyeljen a 8080-as porton:
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 4200);

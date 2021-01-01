@@ -16,3 +16,23 @@ jobs:
       jdk: openjdk8
       language: java
       script: "mvn -B test"
+    -
+      before_install: cd Angular/static-ui
+      language: node_js
+      node_js: - "10"
+      sudo: false
+      cache:
+        directories:
+          - node_modules
+      before_script:
+        - npm install -g @angular/cli
+      script:
+        - ng lint
+        - ng test --watch=false
+      script: echo "npm test temporarily disabled"
+      deploy:
+        skip_cleanup: true
+        provider: heroku
+        api_key: $HEROKU_TOKEN
+        app: shopping-list-fswp
+        on: main

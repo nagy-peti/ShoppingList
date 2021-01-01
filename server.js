@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 
 // HTTP -> HTTPS átirányítás, amennyiben szükséges:
-
+/*
 const foreceSSL = function() {
 	return function(req, res, next) {
 		if (req.headers['x-forwarded-proto'] !== 'https') {
@@ -14,7 +14,7 @@ const foreceSSL = function() {
 		next();
 	}
 }
-
+*/
 // Statikus állományok elérésének definiálása:
 
 app.use(express.static(__dirname + '/dist/static-ui'));

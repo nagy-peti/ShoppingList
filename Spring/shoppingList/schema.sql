@@ -15,7 +15,7 @@ CREATE TABLE `Shopping_list` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `owner_id` int,
   `name` varchar(255),
-  `shared_with_friends` varchar(255)
+  `shared_with_friends` number(1)
 );
 
 CREATE TABLE `Items` (

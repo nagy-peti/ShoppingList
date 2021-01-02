@@ -1,16 +1,15 @@
 package fullstack.bead.shoppingList.controllers;
 
-import fullstack.bead.shoppingList.models.Recipe;
 import fullstack.bead.shoppingList.models.ShoppingList;
 import fullstack.bead.shoppingList.models.User;
+import fullstack.bead.shoppingList.models.UserWithoutPassword;
 import fullstack.bead.shoppingList.repositories.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.persistence.Column;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +36,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> create(@RequestBody registeringUser user){
-        System.out.println(user);
         User newUser = new User();
         newUser.setPassword(user.getPassword());
         newUser.setUsername(user.getUsername());
@@ -48,27 +46,46 @@ public class UserController {
     public ResponseEntity<Iterable<ShoppingList>> getShoppinglists(@PathVariable Integer id){
         Optional<User> oUser =  userRepository.findById(id);
         if (oUser.isPresent()){
-            return ResponseEntity.ok(oUser.get().getShoppingLists());
+            ArrayList<ShoppingList> shoppinglists = new ArrayList<ShoppingList>();
+            shoppinglists.addAll(oUser.get().getShoppingLists());
+            shoppinglists.addAll(getSharedShoppingLists(id));
+            return ResponseEntity.ok(shoppinglists);
         }else{
             return ResponseEntity.notFound().build();
         }
     }
-
-    @GetMapping("/{id}/sharedShoppingLists")
-    public ResponseEntity<Iterable<Object[]>> getSharedShoppingLists(@PathVariable Integer id){
-        Optional<User> oUser =  userRepository.findById(id);
-        if (oUser.isPresent()){
-            return ResponseEntity.ok(userRepository.getSharedShoppingLists(id));
-        }else{
-            return ResponseEntity.notFound().build();
+    private Collection<ShoppingList> getSharedShoppingLists(Integer id){
+        Optional<User> oUser = userRepository.findById(id);
+        ArrayList<ShoppingList> shoppinglists = new ArrayList<>();
+        ArrayList<User> friends = new ArrayList<User>();
+        friends.addAll(oUser.get().getFriends());
+        friends.addAll(oUser.get().getFriendOf());
+        for (User friend: friends) {
+            if(friend.getShoppingLists()!=null){
+                for (ShoppingList sl : friend.getShoppingLists()) {
+                    if (sl.isShared_with_friends()){
+                        shoppinglists.add(sl);
+                    }
+                }
+            }
         }
+        return shoppinglists;
+
     }
 
     @GetMapping("/{id}/friends")
-    public ResponseEntity<Iterable<Object[]>> getFriends(@PathVariable Integer id){
-        Optional<User> oUser =  userRepository.findById(id);
+    public ResponseEntity<Iterable<UserWithoutPassword>> getFriends(@PathVariable Integer id){
+        Optional<User> oUser = userRepository.findById(id);
         if (oUser.isPresent()){
-            return ResponseEntity.ok(userRepository.getFriends(id));
+            ArrayList<User> friends = new ArrayList<User>();
+            friends.addAll(oUser.get().getFriends());
+            friends.addAll(oUser.get().getFriendOf());
+            ArrayList<UserWithoutPassword> f = new ArrayList<UserWithoutPassword>();
+            for (User friend : friends) {
+                f.add(new UserWithoutPassword(friend.getId(),friend.getUsername()));
+            }
+
+            return ResponseEntity.ok(f);
         }else{
             return ResponseEntity.notFound().build();
         }

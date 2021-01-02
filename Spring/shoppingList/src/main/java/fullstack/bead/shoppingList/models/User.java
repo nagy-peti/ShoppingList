@@ -1,15 +1,14 @@
 package fullstack.bead.shoppingList.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name="users")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -34,11 +33,12 @@ public class User {
             inverseJoinColumns=@JoinColumn(name="id_2")
     )
     private List<User> friends;
-//
-//    @ManyToMany
-//    @JoinTable(name="friends",
-//            joinColumns=@JoinColumn(name="id_2"),
-//            inverseJoinColumns=@JoinColumn(name="id_1")
-//    )
-//    private List<User> friendOf;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(name="friends",
+            joinColumns=@JoinColumn(name="id_2"),
+            inverseJoinColumns=@JoinColumn(name="id_1")
+    )
+    private List<User> friendOf;
 }

@@ -1,6 +1,4 @@
 
-DELETE FROM `Recipes`;
-
 INSERT INTO `Users` (`username` , `password`) VALUES ('user1','user1');
 INSERT INTO `Users` (`username` , `password`) VALUES ('user2','user2');
 INSERT INTO `Users` (`username` , `password`) VALUES ('user3','user3');
@@ -11,11 +9,11 @@ INSERT INTO `friends` (`id_1` , `id_2`) VALUES (1,3);
 INSERT INTO `friends` (`id_1` , `id_2`) VALUES (3,4);
 
 
-INSERT INTO `Shopping_list` (`owner_id` , `name`) VALUES (1,'list1');
-INSERT INTO `Shopping_list` (`owner_id` , `name`) VALUES (1,'list2');
-INSERT INTO `Shopping_list` (`owner_id` , `name`) VALUES (2,'list3');
-INSERT INTO `Shopping_list` (`owner_id` , `name`,`shared_with_friends`) VALUES (1,'sharedList1',' 2');
-INSERT INTO `Shopping_list` (`owner_id` , `name`,`shared_with_friends`) VALUES (1,'sharedList2','2 3');
+INSERT INTO `Shopping_list` (`owner_id` , `name`,`shared_with_friends`) VALUES (1,'list1',FALSE);
+INSERT INTO `Shopping_list` (`owner_id` , `name`,`shared_with_friends`) VALUES (1,'list2',FALSE );
+INSERT INTO `Shopping_list` (`owner_id` , `name`,`shared_with_friends`) VALUES (2,'list3',FALSE );
+INSERT INTO `Shopping_list` (`owner_id` , `name`,`shared_with_friends`) VALUES (1,'sharedList1',TRUE );
+INSERT INTO `Shopping_list` (`owner_id` , `name`,`shared_with_friends`) VALUES (1,'sharedList2',TRUE );
 
 
 INSERT INTO `Items` (`shopping_list_id`, `quantity`, `quantity_type`, `name`) VALUES (1, 1, 'db', 'item1');

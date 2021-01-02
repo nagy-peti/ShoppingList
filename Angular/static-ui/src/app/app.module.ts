@@ -37,6 +37,9 @@ import { AddRecipeComponent } from './recipes/add-recipe/add-recipe.component';
 import { AddItemComponent } from './shared/item/add-item/add-item.component';
 import { AddFriendComponent } from './social/add-friend/add-friend/add-friend.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +80,7 @@ import { AddFriendComponent } from './social/add-friend/add-friend/add-friend.co
     MatCheckboxModule,
     MatTooltipModule,
     MatDialogModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'main', component: MainComponent, canActivate: [LoginGuard] },

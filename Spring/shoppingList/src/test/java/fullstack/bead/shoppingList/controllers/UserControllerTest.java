@@ -2,6 +2,7 @@ package fullstack.bead.shoppingList.controllers;
 
 import fullstack.bead.shoppingList.models.ShoppingList;
 import fullstack.bead.shoppingList.models.User;
+import fullstack.bead.shoppingList.models.UserWithoutPassword;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,22 +55,26 @@ class UserControllerTest {
     public void shouldReturnUserShoppingLists() throws Exception {
         ResponseEntity<List<ShoppingList>> response =
                 restTemplate.exchange(
-                        "http://localhost:" + port + "/users/1/shoppinglists", HttpMethod.GET, null, new ParameterizedTypeReference<List<ShoppingList>>() {});
+                        "http://localhost:" + port + "/users/3/shoppinglists", HttpMethod.GET, null, new ParameterizedTypeReference<List<ShoppingList>>() {});
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().size()).isEqualTo(4);
-    }
-    @Test
-    public void shouldReturnUserSharedShoppingLists() throws Exception {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/users/2/sharedShoppingLists", String.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        //JSONAssert.assertEquals("[[1,\"sharedList1\",\" 2\"],[1,\"sharedList2\",\" 2 3\"]]", response.getBody(), false);
-        assertThat(response.getBody()).isEqualTo("[[4,1,\"sharedList1\",\" 2\"],[5,1,\"sharedList2\",\"2 3\"]]");
+        assertThat(response.getBody().size()).isEqualTo(2);
     }
     @Test
     public void shouldReturnUserFriends() throws Exception {
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/users/2/friends", String.class);
+
+        ResponseEntity<List<UserWithoutPassword>> response =
+                restTemplate.exchange(
+                        "http://localhost:" + port + "/users/4/friends", HttpMethod.GET, null, new ParameterizedTypeReference<List<UserWithoutPassword>>() {});
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEqualTo("[[1,\"user1\"]]");
+        assertThat(response.getBody().size()).isEqualTo(1);
+
+
+        response =
+                restTemplate.exchange(
+                        "http://localhost:" + port + "/users/1/friends", HttpMethod.GET, null, new ParameterizedTypeReference<List<UserWithoutPassword>>() {});
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody().size()).isEqualTo(2);
+
 
     }
 
@@ -86,8 +91,11 @@ class UserControllerTest {
         assertThat(responsePost.getBody().getId()).isNotNull();
         assertThat(responsePost.getBody().getId()).isEqualTo(4);
 
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/users/4/friends", String.class);
+
+        ResponseEntity<List<UserWithoutPassword>> response =
+                restTemplate.exchange(
+                        "http://localhost:" + port + "/users/4/friends", HttpMethod.GET, null, new ParameterizedTypeReference<List<UserWithoutPassword>>() {});
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEqualTo("[[2,\"user2\"],[3,\"user3\"]]");
+        assertThat(response.getBody().size()).isEqualTo(2);
     }
 }

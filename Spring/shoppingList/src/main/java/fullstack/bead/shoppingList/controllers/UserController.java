@@ -36,12 +36,22 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> create(@RequestBody registeringUser user){
-        System.out.println(user);
-        User newUser = new User();
-        newUser.setPassword(user.getPassword());
-        newUser.setUsername(user.getUsername());
-        return ResponseEntity.ok(userRepository.save(newUser));
+    public ResponseEntity<Integer> create(@RequestBody registeringUser user){
+        try {
+            Optional<User> oCompany = userRepository.findByUsername(user.getUsername());
+            if (oCompany.isPresent()) {
+                return ResponseEntity.ok(-1);
+            } else {
+                User userObject = new User();
+                userObject.setUsername(user.getUsername());
+                userObject.setPassword(user.getPassword());
+                User savedUser = userRepository.save(userObject);
+                return ResponseEntity.ok(savedUser.getId());
+            }
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 
     @GetMapping("/{id}/shoppinglists")

@@ -2,6 +2,7 @@ package fullstack.bead.shoppingList.repositories;
 
 import fullstack.bead.shoppingList.models.ShoppingList;
 import fullstack.bead.shoppingList.models.User;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -24,4 +25,8 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     @Query(value="SELECT * FROM users u WHERE u.username = :username AND u.password = :password", nativeQuery = true)
     User findValidUser(@Param("username") String username, @Param("password") String password);
+    
+    @Query(value="SELECT * FROM users u WHERE u.username = :username",nativeQuery = true)
+    Optional<User> findByUsername(@Param("username") String username);
+
 }

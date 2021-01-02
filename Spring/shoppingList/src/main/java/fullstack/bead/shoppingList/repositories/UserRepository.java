@@ -21,4 +21,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
             "(select u.id, u.username from friends f join users u on f.id_2 = u.id where f.id_1=:id UNION select u.id, u.username from friends f join users u on f.id_1 = u.id where f.id_2=:id) uniontable " +
             "on s.owner_id=uniontable.id where  s.shared_with_friends LIKE concat('%',:id,'%')",nativeQuery=true)
     Iterable<Object[]> getSharedShoppingLists(@Param("id") Integer id);
+
+    @Query(value="SELECT * FROM users u WHERE u.username = :username AND u.password = :password", nativeQuery = true)
+    User findValidUser(@Param("username") String username, @Param("password") String password);
 }

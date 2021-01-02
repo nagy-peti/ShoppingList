@@ -86,6 +86,16 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    @GetMapping("/auth")
+    private ResponseEntity<Integer> getValiadtion(@RequestParam String username, @RequestParam String password) {
+        User foundCompany = userRepository.findValidUser(username, password);
+        if (foundCompany != null) {
+            return ResponseEntity.ok(foundCompany.getId());
+        } else {
+            return ResponseEntity.ok().build();
+        }
+    }
 }
 
 @Data

@@ -1,12 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { Subscription } from 'rxjs';
+import { ValidationService } from '../services/validation.service';
+import { SerialNumberService } from '../services/serialNumber.service';
 
 interface ItemList{
   [key:string]:ItemTuple[];
 }
 interface ItemTuple{
   name: string;
-  quantity: string;
+  qty: string;
+  qtyType: string;
+}
+
+interface ListRow{
+  id: number;
+  items: any[]; //later itemtuple
+  name: string;
+  owner_id: number;
+  recpies: any[]; //change later
+  shared_with_friends: string;
 }
 
 @Component({
@@ -14,66 +27,67 @@ interface ItemTuple{
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
+
+  lodash = _;
 
   public showListTable: boolean = false;
   public displayedColumns: string[] = ['name','quantity'];
   public chosenTuple: ItemTuple[] = [];
   public chosenTupleName: string = "";
   public itemName: string = "";
-  public quantity: string = "";
-  public unit: string = "";
+  public qty: string = "";
+  public qtyType: string = "";
   public editMode: boolean = false;
   public listTitles: string[] = [];
   public listName: string = "";
-  public items: ItemList = {
-    Party:[
-      {name:'Nacho', quantity:'2 bags'},
-      {name:'Nacho Dip', quantity:'2 jars'},
-      {name:'Fanta Orange', quantity:'3 bottles'},
-      {name:'Beer', quantity:'24 bottles'},
-      {name:'Wine', quantity:'10 bottles'},
-      {name:'Vodka', quantity:'1 bottle'},
-      {name:'Whiskey', quantity:'1 bottle'},
-      {name:'Frozen Pizza', quantity:'5 pieces'}
-    ],
-    Groceries: [
-      {name:'Bread', quantity:'1 loaf'},
-      {name:'Butter', quantity:'500g'},
-      {name:'Ham', quantity:'1 loaf'},
-      {name:'Eggs', quantity:'1 loaf'},
-      {name:'Toilet paper', quantity:'12 rolls'},
-      {name:'Deodorant', quantity:'1'},
-      {name:'Bread', quantity:'1 loaf'},
-    ],
-    Netflix:[
-      {name:'Beer', quantity:'3 bottles'},
-      {name:'Chips', quantity:'2 bags'},
-      {name:'Gummibears', quantity:'1 bag'},
-    ],
-    Hiking:[
-      {name:'Water', quantity:'3 bottles'},
-      {name:'Chocolate', quantity:'6 bars'},
-      {name:'Tea', quantity:'1 box'},
-      {name:'Heating gel', quantity:'4 pieces'},
-    ],
-    Utilities:[
-      {name:'Floraszept', quantity:'1 bottle'},
-      {name:'Garbage bags', quantity:'2 rolls'},
-      {name:'Toilet paper', quantity:'24 rolls'},
-      {name:'Aerosol', quantity:'1 bottle'},
-      {name:'Sponge', quantity:'10 pieces'},
-      {name:'Washing gel', quantity:'1 bottle'},
-    ],
-  };
+  public items: ItemList = {};
+  private subscription!: Subscription;
+  private userId!: number;
 
-  constructor( ) { }
+  constructor(
+    private backend: ValidationService,
+    private serialNumber: SerialNumberService
+  ) { }
 
   ngOnInit(): void {
-    this.chosenTuple = this.items['Party'];
-    this.chosenTupleName = 'Party';
+    this.getUserId();
     this.showListTable = true;
-    this.listTitles = Object.keys(this.items);
+  }
+
+  private getUserId(){
+    this.subscription = this.serialNumber.serialNumberReceived.subscribe(
+      data => {
+        this.userId = data;
+        this.getShoppingLists();
+        console.log(this.userId);
+      }
+    )
+  }
+
+  private getShoppingLists(){
+    this.backend.getShoppingLists(this.userId).subscribe(
+      (data) => {
+        console.log(data);
+        (<ListRow[]>data).forEach((element:ListRow) => {
+          this.items[element.name] = element.items.map(item => {
+            return {
+              name: item.name,
+              qty: item.quantity,
+              qtyType: item.quantity_type
+            }
+          })
+        })
+        this.chosenTuple = this.items[Object.keys(this.items)[0]];
+        this.chosenTupleName = Object.keys(this.items)[0];
+        this.listTitles = Object.keys(this.items);
+      }
+    );
+  }
+
+  ngOnDestroy(){
+    console.log('destroyed');
+    this.subscription.unsubscribe();
   }
 
   onClickEvent(data:string):void{
@@ -85,17 +99,18 @@ export class MainComponent implements OnInit {
   addItem(){
     this.items[this.chosenTupleName].push({
       name: this.itemName, 
-      quantity: this.quantity+' '+this.unit
+      qty: this.qty,
+      qtyType: this.qtyType
     });
     this.chosenTuple = _.cloneDeep(this.items[this.chosenTupleName]);
     this.itemName = "";
-    this.quantity = "";
-    this.unit = "";
+    this.qty = "";
+    this.qtyType = "";
   }
 
   deleteRow(data:ItemTuple){
     let index = this.items[this.chosenTupleName].findIndex(item => 
-      item.name === data.name && item.quantity === data.quantity
+      item.name === data.name && item.qty === data.qty
     );
     this.items[this.chosenTupleName].splice(index,1);
     this.chosenTuple = _.cloneDeep(this.items[this.chosenTupleName]);
@@ -122,8 +137,8 @@ export class MainComponent implements OnInit {
 
   modifyRow(data:ItemTuple){
     this.itemName = data.name;
-    this.quantity = data.quantity.split(" ")[0];
-    this.unit = data.quantity.split(" ")[1];
+    this.qty = data.qty;
+    this.qtyType = data.qtyType;
     this.deleteRow(data);
   }
 

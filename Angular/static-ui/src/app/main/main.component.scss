@@ -16,6 +16,11 @@
                     margin-right: auto !important;
                     min-width: 100px;
                     max-width: 502px;
+                    mat-checkbox{
+                        float:right;
+                        font-size: 14px !important;
+                        margin-right: 4px;
+                    }
                 }
             }
 

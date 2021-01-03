@@ -37,17 +37,14 @@ class UserControllerTest {
         User newUser = new User();
         newUser.setUsername("username_new");
         newUser.setPassword("password");
-        ResponseEntity<User> responsePost =
+        ResponseEntity<Integer> responsePost =
                 restTemplate.
                         postForEntity("http://localhost:" + port + "/users/register",
                                 newUser,
                                 User.class);
 
         assertThat(responsePost.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responsePost.getBody().getId()).isNotNull();
-        assertThat(responsePost.getBody().getUsername()).isEqualTo("username_new");
-        assertThat(responsePost.getBody().getPassword()).isEqualTo("password");
-
+        assertThat(responsePost != -1).isTrue();
     }
 
     @Test

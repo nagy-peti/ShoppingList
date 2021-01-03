@@ -19,21 +19,23 @@ export class ItemService {
 
   deleteItem(id:number){
     return this.http.delete(baseUrl+'items/'+id);
-}
+  }
 
-addItem(itemToAdd:ItemTuple){
+  addItem(itemToAdd:ItemTuple){
     return this.http.post(baseUrl+'items', itemToAdd, httpOptions);
-}
+  }
 
   add(item:Item) {
-    console.log(item)
+      console.log(item)
+      return this.http.post(baseUrl+'items/', item, httpOptions);
   }
   delete(id:number){
-    console.log("deleting:",id)
-    
+    console.log("deleting item:",id)
+    return this.http.delete(baseUrl+'items/'+id);
   }
   modify(item: Item){
     console.log(item)
+    return this.http.put(baseUrl+'items/'+item.id, item)
   }
 }
 

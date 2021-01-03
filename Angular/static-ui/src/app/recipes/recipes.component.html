@@ -25,13 +25,13 @@
             </mat-expansion-panel-header>
             <div class="item-list">
                 <div *ngFor="let item of recipe.items">
-                    <item-card color="primary" class="m-0" [item]="item"></item-card>
+                    <item-card (itemChange)="deleteItem($event)" color="primary" class="m-0" [item]="item"></item-card>
                 </div>
                 <div class="button-container">
                 <button mat-mini-fab class="mat-elevation-z0,button-icon" color="primary"
                         matTooltip="Add new item"
                         matTooltipPosition="above"
-                        (click)="openAddItemDialog()">
+                        (click)="openAddItemDialog(recipe)">
                             <mat-icon>plus_one</mat-icon>
                         </button>
                     </div>

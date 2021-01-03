@@ -39,9 +39,6 @@ import { AddFriendComponent } from './social/add-friend/add-friend/add-friend.co
 import { UsersService } from './services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientModule } from '@angular/common/http';
-
-
 @NgModule({
   declarations: [
     AppComponent,

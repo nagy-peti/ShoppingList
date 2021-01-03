@@ -36,7 +36,7 @@ import { ItemComponent } from './shared/item/item.component';
 import { AddRecipeComponent } from './recipes/add-recipe/add-recipe.component';
 import { AddItemComponent } from './shared/item/add-item/add-item.component';
 import { AddFriendComponent } from './social/add-friend/add-friend/add-friend.component';
-import { ValidationService } from './services/validation.service';
+import { UsersService } from './services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -89,7 +89,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatExpansionModule,
   ],
-    providers: [RecipeService, ValidationService],
+    providers: [RecipeService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -44,7 +44,7 @@ class UserControllerTest {
                                 User.class);
 
         assertThat(responsePost.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responsePost != -1).isTrue();
+        assertThat(responsePost.getBody() != -1).isTrue();
     }
 
     @Test

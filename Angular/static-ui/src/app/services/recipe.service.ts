@@ -1,13 +1,41 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Item } from './item.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-  recipes: Recipe[]
-  constructor() {
-    this.recipes =
+  private baseUrl = 'http://shopping-list-fswp.herokuapp.com/recipes';  
+  constructor(private http:HttpClient) {
+    
+  }
+  getAll(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
+  }
+  add(recipe: Recipe):void {
+    console.log(recipe)
+  }
+  delete(id:number){
+    console.log(id)
+  }
+  modify(recipe: Recipe){
+    console.log(recipe)
+  }
+}
+
+
+export interface Recipe {
+  id: number,
+  name: string,
+  items: Item[]
+} 
+
+
+
+
+/*this.recipes =
     [{
       id: 1,
       name: "recipe1",
@@ -109,25 +137,4 @@ export class RecipeService {
           quantity_type: "db",
           quantity: 10,
         }]
-    }]
-  }
-  getAll():Recipe[] {
-    return this.recipes
-  }
-  add(recipe: Recipe):void {
-    console.log(recipe)
-  }
-  delete(id:number){
-    console.log(id)
-  }
-  modify(recipe: Recipe){
-    console.log(recipe)
-  }
-}
-
-
-export interface Recipe {
-  id: number,
-  name: string,
-  items: Item[]
-} 
+    }]*/

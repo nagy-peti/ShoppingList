@@ -39,6 +39,9 @@ import { AddFriendComponent } from './social/add-friend/add-friend/add-friend.co
 import { UsersService } from './services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +83,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatTooltipModule,
     HttpClientModule,
     MatDialogModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'main', component: MainComponent, canActivate: [LoginGuard] },

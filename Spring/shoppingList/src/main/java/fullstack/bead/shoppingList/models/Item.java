@@ -6,7 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity(name="items")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode

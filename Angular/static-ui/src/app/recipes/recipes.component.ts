@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { ItemService } from '../services/item.service';
 import { AddItemComponent } from '../shared/item/add-item/add-item.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipes',
@@ -11,16 +12,21 @@ import { AddItemComponent } from '../shared/item/add-item/add-item.component';
   styleUrls: ['./recipes.component.scss']
 })
 export class RecipesComponent implements OnInit {
-  public recipes;
+  public recipes: Recipe[] = [];
 
   constructor(public dialog: MatDialog,
     public recipeService: RecipeService,
     public itemService: ItemService) { 
-    this.recipes=recipeService.getAll();
+    
+  }
+  ngOnInit():void{
+    this.recipeService.getAll().subscribe((data: Recipe[])=>{
+    this.recipes=data
+  });
+  console.log(this.recipes)
+
   }
 
-  ngOnInit(): void {
-  }
   openAddRecipeDialog() {
     const dialogRef = this.dialog.open(AddRecipeComponent, {
       width:'300px'

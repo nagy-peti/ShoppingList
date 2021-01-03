@@ -38,6 +38,8 @@ import { AddItemComponent } from './shared/item/add-item/add-item.component';
 import { AddFriendComponent } from './social/add-friend/add-friend/add-friend.component';
 import { UsersService } from './services/users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ShoppingListService } from './services/shopping-list.service';
+import { ItemService } from './services/item.service';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,6 @@ import { HttpClientModule } from '@angular/common/http';
     MatTooltipModule,
     HttpClientModule,
     MatDialogModule,
-    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'main', component: MainComponent, canActivate: [LoginGuard] },
@@ -90,7 +91,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatExpansionModule,
   ],
-    providers: [RecipeService, UsersService],
+    providers: [
+      RecipeService, 
+      UsersService, 
+      ShoppingListService, 
+      ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

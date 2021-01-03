@@ -45,7 +45,6 @@ class UserControllerTest {
 
         assertThat(responsePost.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responsePost.getBody().getId()).isNotNull();
-        assertThat(responsePost.getBody().getId()).isEqualTo(5);
         assertThat(responsePost.getBody().getUsername()).isEqualTo("username_new");
         assertThat(responsePost.getBody().getPassword()).isEqualTo("password");
 

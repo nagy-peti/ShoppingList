@@ -41,7 +41,7 @@ class UserControllerTest {
                 restTemplate.
                         postForEntity("http://localhost:" + port + "/users/register",
                                 newUser,
-                                User.class);
+                                Integer.class);
 
         assertThat(responsePost.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responsePost.getBody() != -1).isTrue();

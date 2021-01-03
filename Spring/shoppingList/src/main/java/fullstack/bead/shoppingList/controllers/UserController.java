@@ -45,8 +45,6 @@ public class UserController {
                 userObject.setUsername(user.getUsername());
                 userObject.setPassword(user.getPassword());
                 User savedUser = userRepository.save(userObject);
-                ResponseEntity<Integer> temp = ResponseEntity.ok(savedUser.getId());
-                System.out.println(temp.getBody());
                 return ResponseEntity.ok(savedUser.getId());
             }
         } catch (Exception e) {

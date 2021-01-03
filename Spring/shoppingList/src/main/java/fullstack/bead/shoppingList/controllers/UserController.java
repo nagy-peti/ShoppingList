@@ -103,9 +103,9 @@ public class UserController {
         }
     }
     @PostMapping("/{id}/addFriend")
-    public ResponseEntity<User> addFriend(@PathVariable Integer id, @RequestBody int newFriendId){
+    public ResponseEntity<User> addFriend(@PathVariable Integer id, @RequestBody String newFriendName){
         Optional<User> oUser =  userRepository.findById(id);
-        Optional<User> friend =  userRepository.findById(newFriendId);
+        Optional<User> friend =  userRepository.findByUsername(newFriendName);
         if (oUser.isPresent() && friend.isPresent()){
             List<User> allFriends = oUser.get().getFriends();
             allFriends.add(friend.get());

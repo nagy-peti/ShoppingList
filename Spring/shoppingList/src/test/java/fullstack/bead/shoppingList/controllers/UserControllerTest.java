@@ -81,7 +81,7 @@ class UserControllerTest {
         ResponseEntity<User> responsePost =
                 restTemplate.
                         postForEntity("http://localhost:" + port + "/users/4/addFriend",
-                                2,
+                                "user2",
                                 User.class);
         assertThat(responsePost.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responsePost.getBody().getId()).isNotNull();

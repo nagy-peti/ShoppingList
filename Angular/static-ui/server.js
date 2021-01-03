@@ -1,5 +1,6 @@
 const express = require('express');
-const app = express();
+const cors = require('cors');
+const app = express();app.use(cors());
 const path = require('path');
 
 // HTTP -> HTTPS átirányítás, amennyiben szükséges:

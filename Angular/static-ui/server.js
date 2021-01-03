@@ -1,6 +1,5 @@
 const express = require('express');
-const cors = require('cors');
-const app = express();app.use(cors());
+const app = express();
 const path = require('path');
 
 // HTTP -> HTTPS átirányítás, amennyiben szükséges:
@@ -15,7 +14,6 @@ const foreceSSL = function() {
 		next();
 	}
 }
-
 // Statikus állományok elérésének definiálása:
 
 app.use(express.static(__dirname + '/dist/static-ui'));
@@ -28,4 +26,4 @@ app.get('/*', function(req, res) {
 
 // Express figyeljen a 8080-as porton:
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 4200);

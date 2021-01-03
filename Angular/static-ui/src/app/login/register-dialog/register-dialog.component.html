@@ -8,16 +8,17 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>
-            E-mail
-        </mat-label>
-        <input matInput [(ngModel)]="email">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>
             Password
         </mat-label>
         <input matInput [(ngModel)]="password" [type]="'password'">
     </mat-form-field><button mat-stroked-button class="row4" (click)="createAccount()">
         Create
     </button>
+    <span *ngIf="isInvalid" 
+          class="invalid_login">
+        <mat-icon>
+            error
+        </mat-icon>
+        Username already exists!
+    </span>
 </div>

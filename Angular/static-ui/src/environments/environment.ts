@@ -6,8 +6,7 @@ export const environment = {
   production: false
 };
 
-//export const baseUrl: string = 'https://shopping-list-fswp.herokuapp.com/';
-export const baseUrl: string = 'localhost:8080';
+export const baseUrl: string = 'https://shopping-list-fswp.herokuapp.com/';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

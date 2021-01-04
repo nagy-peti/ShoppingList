@@ -7,7 +7,8 @@
             <input matInput formControlName="name">
             <mat-error *ngIf="!isnewFriendExist || addFriendForm.invalid ">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-        <p>{{getErrorMessage()}}</p>
+        <p style="margin-top: 0px; color: red;">{{getErrorMessage()}}</p>
+
 
     </div>
     <mat-dialog-actions class="buttons">

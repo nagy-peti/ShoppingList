@@ -15,7 +15,6 @@ export class FriendsService {
     return this.http.get<User[]>(baseUrl+'users/'+userId+'/friends');
   }
   add(userId:number,friendName: string) {
-    console.log(friendName)
     return this.http.post(baseUrl+'users/'+userId+'/addFriend',friendName);
   }
 }

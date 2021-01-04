@@ -26,15 +26,12 @@ export class ItemService {
   }
 
   add(item:Item) {
-      console.log(item)
       return this.http.post(baseUrl+'items/', item, httpOptions);
   }
   delete(id:number){
-    console.log("deleting item:",id)
     return this.http.delete(baseUrl+'items/'+id);
   }
   modify(item: Item){
-    console.log(item)
     return this.http.put(baseUrl+'items/'+item.id, item)
   }
 }

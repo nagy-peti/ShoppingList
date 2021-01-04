@@ -38,17 +38,13 @@ export class AddFriendComponent implements OnInit {
             data => {
                 this.dialogRef.close()
                 this.isnewFriendExist = true
-                console.log(this.isnewFriendExist)
             },
             error => {
-                console.log('oops', error)
                 this.isnewFriendExist = false
             }
         )
     }
     getErrorMessage(): string {
-        console.log(!this.isnewFriendExist)
-        console.log(this.addFriendForm.hasError('required'))
         if (!this.isnewFriendExist) {
             return "No user with that name"
         }

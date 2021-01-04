@@ -14,15 +14,12 @@ export class RecipeService {
         return this.http.get<Recipe[]>(baseUrl+'recipes/');
     }
     add(recipe: Recipe) {
-        console.log(recipe)
         return this.http.post(baseUrl+'recipes/',recipe);
     }
     delete(id: number) {
-        console.log(id)
         return this.http.delete(baseUrl+'recipes/'+id);
     }
     modify(recipe: Recipe) {
-        console.log(recipe)
         return this.http.put(baseUrl+'recipes/'+recipe.id,recipe);
     }
 }

@@ -47,7 +47,6 @@ export class RecipesComponent implements OnInit {
     getRecipes() {
         this.recipeService.getAll().subscribe(
             (data) => {
-                console.log(data)
                 this.recipes = data
             }
         )
@@ -64,7 +63,6 @@ export class RecipesComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(() => {
             this.getRecipes()
-            console.log(this.recipes)
         }
         )
     }
@@ -78,7 +76,6 @@ export class RecipesComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(() => {
             this.getRecipes()
-            console.log(this.recipes)
         }
         )
     }
@@ -93,13 +90,11 @@ export class RecipesComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(() => {
             this.getRecipes()
-            console.log(this.recipes)
         }
         )
 
     }
     deleteItem(deletedItem : Item){
-        console.log(deletedItem)
         const index=this.recipes.findIndex(e=>e.id==deletedItem.recipe_id)
         this.recipes[index].items=this.recipes[index].items.filter(item=>item.id!=deletedItem.id)
 

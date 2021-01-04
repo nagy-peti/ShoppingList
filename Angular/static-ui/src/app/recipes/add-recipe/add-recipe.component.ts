@@ -31,15 +31,12 @@ export class AddRecipeComponent implements OnInit {
 
     addRecipe(form: FormGroup) {
         if (!this.data.recipe) { //add item
-            // this.recipeService.add(form.value);
-            console.log("NEW RECIPE: ", form.value)
 
             this.recipeService.add(form.value).subscribe()
         }
         else { //modify item
             let modified: Recipe = this.data.recipe
             modified.name = form.value.name
-            console.log("MODIFY RECIPE: ", modified)
             this.recipeService.modify(modified).subscribe()
         }
         this.dialogRef.close();
@@ -47,7 +44,6 @@ export class AddRecipeComponent implements OnInit {
 
     getErrorMessage(): string {
         this.isNameEmpty = this.addRecipeForm.value.name == null || this.addRecipeForm.value.name.length == 0
-        console.log(this.addRecipeForm.value)
         if (this.isNameEmpty) {
             return 'You must enter a value';
         }

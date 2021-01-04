@@ -45,7 +45,6 @@ export class SocialComponent implements OnInit, OnDestroy {
     getFriends(){
         this.friendsService.getUserFriends(this.userId).subscribe(
             (data) => {
-                console.log(data)
                 this.friends = data
             }
         )
@@ -60,7 +59,6 @@ export class SocialComponent implements OnInit, OnDestroy {
         });
         dialog.afterClosed().subscribe( () => {
             this.getFriends()
-            console.log(this.friends)
         }
         )
     }

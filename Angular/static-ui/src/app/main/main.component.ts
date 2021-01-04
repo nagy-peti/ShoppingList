@@ -106,8 +106,6 @@ export class MainComponent implements OnInit, OnDestroy {
   onClickEvent(data:string):void{
     this.chosenTuple = this.items[data];
     this.chosenTupleName = data;
-    //if(this.chosenTuple = )
-    console.log("onclick");
     this.showListTable = true;
   }
 

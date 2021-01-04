@@ -19,7 +19,7 @@ export class AddItemComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddItemComponent>,
     public ItemService: ItemService,
-    @Inject(MAT_DIALOG_DATA) public data: { recipeId?:number, item?: Item }
+    @Inject(MAT_DIALOG_DATA) public data: { recipeId?: number, item?: Item }
   ) {
     this.addItemForm = this.formBuilder.group({
       name: [this.data.item?.name, Validators.required],
@@ -47,5 +47,20 @@ export class AddItemComponent implements OnInit {
       this.ItemService.modify(modified).subscribe();
     }
     this.dialogRef.close();
+  }
+
+  getErrorMessage(elementName: string): string {
+
+    if (elementName == "Name" && (this.addItemForm.value.name == null || this.addItemForm.value.name.length == 0)) {
+      return 'You must enter a value';
+    }
+    if (elementName == "Quantity type" && (this.addItemForm.value.quantity_type == null || this.addItemForm.value.quantity_type.length == 0)) {
+      return 'You must enter a value';
+    }
+    if (elementName == "Quantity" && this.addItemForm.value.quantity == null || this.addItemForm.value.quantity.length == 0) {
+      return 'You must enter a value';
+    }
+    return 'something bad happened';
+
   }
 }

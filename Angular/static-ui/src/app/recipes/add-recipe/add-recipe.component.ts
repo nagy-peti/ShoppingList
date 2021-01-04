@@ -12,6 +12,7 @@ export class AddRecipeComponent implements OnInit {
 
     public addRecipeForm: FormGroup;
     private userId!: number;
+    isNameEmpty!: boolean;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -27,11 +28,12 @@ export class AddRecipeComponent implements OnInit {
     ngOnInit(): void {
     }
 
+
     addRecipe(form: FormGroup) {
         if (!this.data.recipe) { //add item
             // this.recipeService.add(form.value);
             console.log("NEW RECIPE: ", form.value)
-            
+
             this.recipeService.add(form.value).subscribe()
         }
         else { //modify item
@@ -41,6 +43,15 @@ export class AddRecipeComponent implements OnInit {
             this.recipeService.modify(modified).subscribe()
         }
         this.dialogRef.close();
+    }
+
+    getErrorMessage(): string {
+        this.isNameEmpty = this.addRecipeForm.value.name == null || this.addRecipeForm.value.name.length == 0
+        console.log(this.addRecipeForm.value)
+        if (this.isNameEmpty) {
+            return 'You must enter a value';
+        }
+        return 'error'
     }
 
 }

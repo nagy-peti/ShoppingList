@@ -92,4 +92,31 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
   
 ## Felhasználói dokumentáció
 
+### "use-case" diagram
 
+
+![](/Database/usecase.jpg)
+
+### Regisztálás/Bejelentkezés
+
+Érvényes felhasználói fiók szükséges az alkalmazás használatához, ezért először regisztrálás, majd bejelentkezés szükséges. Nélküle más oldalt nem is lehet megnyitni az alkalmazáson belül.
+
+### Főoldal
+
+A saját és velünk megosztott listáinkat láthatjuk itt. Jobboldali listában lévő különböző bevásárlási listákra kattintva a középső oszlopban a hozzátartozó hozzávalók megjelennek.
+Módosítási nézet: A listák módosításához a jobb felső sarokban lévő négyzetet bepipálva aktiválhatjuk ezt a módot. Ekkor a saját listákat törölhetjük, módosíthatjuk, újat létrehozhatunk és azon belül, hozzávalókat is felvehetünk, módosíthatjuk, törölhetjük. Azt is megadhatjuk, hogy a listánk meg legyen e osztva (publikus) a barátainkkal, vagy ne.
+
+![](/Database/main.jpg)
+
+### Barátok oldal
+
+A barátok oldalon az eddigi felvett barátokat találja. Az oldal alsó jobb szélén lévő ikonra kattintva új barátokat lehet felvenni felhasználónév megadásával. Ha megadott névhez nem tartozik felhasználó, akkor azt egy hibaüzenet jelzi. Sikeres hozzáadás esetén a listában láthatjuk.
+
+![](/Database/social.jpg)
+
+### Receptek oldal
+
+Az oldal az eddig létrehozott recepteket tartalmazza létrehozás sorrendjében. Először csak a receptek nevei láthatók, amikre rákattintva a komponens lenyílik, és így láthatjuk az egyes receptekhez tartozó hozzávalókat. Ezt persze ugyanígy vissza lehet csukni. A receptet a jobb alsó sarokban a "+"-ra kattintva hozhatunk létre. A recept neve mellett a módosítás és a törlés gombot találjuk. Ugyanúgy a hozzávalókat a recept komponens lenyílt állapotában a "+1"-re kattintva tudunk hozzáadni, módosítani és törölni pedig a hozzájuk tartozó ikonok segítségével.
+
+
+![](/Database/recipes.jpg)

@@ -9,10 +9,10 @@
                     <ng-container matColumnDef="name">
                         <th mat-header-cell *matHeaderCellDef class="big-font"> Item Name </th>
                         <td mat-cell *matCellDef="let element" class="big-font">
-                            <mat-icon *ngIf="editMode" (click)="modifyRow(element)" style="color: #3f51b5">
+                            <mat-icon *ngIf="editMode && isOwned[chosenTupleName]" (click)="modifyRow(element)" style="color: #3f51b5">
                                 create
                             </mat-icon>
-                            <mat-icon *ngIf="editMode" (click)="deleteRow(element)">
+                            <mat-icon *ngIf="editMode && isOwned[chosenTupleName]" (click)="deleteRow(element)">
                                 delete
                             </mat-icon>
                             {{element.name}}
@@ -25,7 +25,7 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"></tr>
                 </table>
-                <div class="add-row" *ngIf="editMode">
+                <div class="add-row" *ngIf="editMode && isOwned[chosenTupleName]">
                     <mat-form-field appearance="outline" class="item-name">
                         <mat-label>
                             Item Name
@@ -59,8 +59,8 @@
             <mat-selection-list class="list-titles">
                 <mat-list-item *ngFor="let listTitle of listTitles" (click)="onClickEvent(listTitle)" matRipple
                     [matRippleRadius]="100">
-                    <mat-icon [ngClass]="{'edit-mode' : editMode}" (click)="deleteList(listTitle)">
-                        {{editMode ? 'delete' : 'fiber_manual_record'}}
+                    <mat-icon [ngClass]="{'edit-mode' : editMode && isOwned[listTitle]}" (click)="deleteList(listTitle)">
+                        {{editMode && isOwned[listTitle] ? 'delete' : 'fiber_manual_record'}}
                     </mat-icon>
                     {{listTitle}}
                 </mat-list-item>

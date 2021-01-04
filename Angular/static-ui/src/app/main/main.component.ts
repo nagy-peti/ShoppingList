@@ -14,12 +14,17 @@ interface Map{
   [key:string]:number;
 }
 
+interface BooleanMap{
+  [key:string]:boolean;
+}
+
 export interface ItemTuple{
   shopping_list_id: number;
   id?:number;
   name: string;
   quantity: string;
   quantity_type: string;
+  owner_id:number;
 }
 
 export interface ListRow{
@@ -52,6 +57,8 @@ export class MainComponent implements OnInit, OnDestroy {
   public listName: string = "";
   public items: ItemList = {};
   public isShared: boolean = false;
+  public isOwned: BooleanMap= {};
+  
   private subscription!: Subscription;
   private userId!: number;
   private shoppingListIds:Map = {};
@@ -80,6 +87,7 @@ export class MainComponent implements OnInit, OnDestroy {
   private getShoppingLists(){
     this.usersService.getShoppingLists(this.userId).subscribe(
       (data) => {
+        console.log(data);
         (<ListRow[]>data).forEach((element:ListRow) => {
           this.items[element.name] = <any[]>element.items.map(item => {
             return <ItemTuple>{
@@ -91,6 +99,7 @@ export class MainComponent implements OnInit, OnDestroy {
             }
           })
           this.shoppingListIds[element.name] = <number>element.id;
+          this.isOwned[element.name] = this.userId === element.owner_id;
         })
         this.chosenTuple = this.items[Object.keys(this.items)[0]];
         this.chosenTupleName = Object.keys(this.items)[0];
@@ -165,7 +174,8 @@ export class MainComponent implements OnInit, OnDestroy {
     }
     this.shoppingListService.addRow(rowToAdd).subscribe(
       data => {
-        this.shoppingListIds[this.listName] = (<any>data).id
+        this.shoppingListIds[this.listName] = (<any>data).id;
+        this.isOwned[this.listName] = (<any>data).true;
         this.items[this.listName]=<ItemTuple[]>[];
         this.chosenTuple = this.items[this.listName];
         this.chosenTupleName = this.listName;

@@ -28,7 +28,7 @@ export interface ListRow{
   name: string;
   owner_id: number;
   recpies?: any[];
-  shared_with_friends?: string;
+  shared_with_friends: boolean;
 }
 
 @Component({
@@ -51,6 +51,7 @@ export class MainComponent implements OnInit, OnDestroy {
   public listTitles: string[] = [];
   public listName: string = "";
   public items: ItemList = {};
+  public isShared: boolean = false;
   private subscription!: Subscription;
   private userId!: number;
   private shoppingListIds:Map = {};
@@ -105,6 +106,8 @@ export class MainComponent implements OnInit, OnDestroy {
   onClickEvent(data:string):void{
     this.chosenTuple = this.items[data];
     this.chosenTupleName = data;
+    //if(this.chosenTuple = )
+    console.log("onclick");
     this.showListTable = true;
   }
 
@@ -151,7 +154,6 @@ export class MainComponent implements OnInit, OnDestroy {
           }
         }
       )
-
     }
   }
 
@@ -161,6 +163,7 @@ export class MainComponent implements OnInit, OnDestroy {
       items: [],
       name: this.listName,
       owner_id: this.userId,
+      shared_with_friends: this.isShared
     }
     this.shoppingListService.addRow(rowToAdd).subscribe(
       data => {
@@ -172,6 +175,7 @@ export class MainComponent implements OnInit, OnDestroy {
         this.listName= "";
       }
     )
+    this.isShared = false;
   }
 
   modifyRow(data:ItemTuple){

@@ -1,11 +1,8 @@
 <div class="main">
     <mat-sidenav-container class="sidenav-container">
         <div *ngIf="showListTable && !lodash.isEmpty(items)" class="center-body">
-            <h1>{{chosenTupleName}} 
-                <mat-checkbox [color]="'primary'" 
-                              [labelPosition]="'before'">
-                            Shared
-                </mat-checkbox>
+            <h1>
+                {{chosenTupleName}} 
             </h1>
             <div class="container">
                 <table mat-table [dataSource]="chosenTuple">
@@ -79,6 +76,14 @@
                         </mat-label>
                         <input matInput [(ngModel)]="listName">
                     </mat-form-field>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-checkbox *ngIf="editMode"
+                              [(ngModel)]="isShared"
+                              [color]="'primary'" 
+                              [labelPosition]="'after'">
+                            Shared
+                </mat-checkbox>
                 </mat-list-item>
             </mat-selection-list>
         </mat-sidenav>

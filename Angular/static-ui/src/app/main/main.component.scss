@@ -16,11 +16,6 @@
                     margin-right: auto !important;
                     min-width: 100px;
                     max-width: 502px;
-                    mat-checkbox{
-                        float:right;
-                        font-size: 14px !important;
-                        margin-right: 4px;
-                    }
                 }
             }
 
@@ -117,6 +112,9 @@
         }
         mat-list-item{
             cursor: pointer;
+            mat-checkbox{
+                margin-left: 44px;
+            }
         }
         .add-icon{
             margin-left: 5%;

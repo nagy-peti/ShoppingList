@@ -6,7 +6,7 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
 - A felhasználó létrehozhat bev. listákat, akár egyszerre többet is helytől, alkalomtól függően (pl otthonra, munkába, buliba...)
 - Fel tud venni embereket barátoknak.
 - Ezekkel a barátokkal a bevásárló listáit megoszthatja. Együtt szerkeszthetik.
-- Különböző bevásárlási 'szett'-ek (pl.: receptek) között böngészhet. Ezeket kiválasztva egyszerre több item felkerül a bevásárlási listára. A felhasználó újat is létre hozhat. Sajátjait módosíthatja.
+- A felhasználó receptek között böngészhet, amihez több tárgy (item) tartozhat. Ahhoz adhat még, törölhet, módosíthat.
 
 ## Nem funkcionális követelmények
 -   Felhasználóbarát, igényes felhasználói felület.
@@ -17,7 +17,7 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
 - Spring
     - backend keretrendszert tartalmazza
 - Angular
-    - frontend keretrendszert tartalmazza(később)
+    - frontend keretrendszert tartalmazza
 - Database
     - az adatbázis inicializáló .sql fájlját, 
     illetve az adatbázis diagramját tartalmazza
@@ -25,7 +25,7 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
 ## Backend megvalósítása
 
 ### Használt technológiák:
-- adatbázis: PostgreSql
+- adatbázis: h2
 - backend: Spring
     - java 1.8
 - CI: Travis
@@ -89,4 +89,7 @@ Egy webes alkalmazás bevásáló listák egyszerű készítéséhez, megosztás
     │   ├── social          # Barátok oldal és új hozzáadása komponens, 
     │   └── services
     └── ...
+  
+## Felhasználói dokumentáció
+
 
